@@ -3,12 +3,23 @@ by Megan Tran
 
 ## Table of Contents
 * [Purpose of Program](#Purpose-of-program)
-* [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Using the Program](#Using-the-Program)
 * [Credits](#Credits)
 
+## Purpose of Program
+
+* Practicing SVM modelling using migrane dataset.
+
+## Technologies
+Languages/ Technologies used:
+
+* Jupyter Notebook
+
+* Python3
+
+## Setup
 
 Download the necessary packages:
 ```
@@ -23,7 +34,6 @@ Check to see if version of Python/Python3 (if on jupyter Notebook) is used, this
 import sys
 sys.version
 ```
-
 Import the following packages and libraries:
 
 ```
@@ -84,4 +94,23 @@ from sklearn.model_selection import train_test_split
 
 IV_migrane_train, IV_migrane_test, DV_migrane_train, DV_migrane_test=  train_test_split(IV_migrane,DV_migrane, test_size = .25, random_state = 4)
 ```
+
+* Parameters for SVM model were
+
+```
+(kernel = "rbf", gamma = 'auto', C=1)
+```
+
+I used rbf so the classification would be better with my nonlinear dataset.
+
 3) Evaluating Model
+
+* Classification report was executed for my SVM model
+<img width="420" alt="image" src="https://github.com/Sonicdaheghod/SVM_headaches/assets/68253811/f738f22e-9e6b-4075-abcd-ae2e67380d34">
+
+** In the future, the zero_division code should be implemented to fix the zeros in the Type values 3,4,5, and 7. This occured because the model did not classify the test data into those categories. Thus, the zero led to a undefined answer when plugged into the formula to determine their precision, f1- socre, and recall.
+
+## Credits
+Source code tutorial by [Cloud and ML Online](https://youtu.be/7sz4WpkUIIs?t=1819)
+Dataset by [EMIR YARKIN YAMAN](https://www.kaggle.com/datasets/weinoose/migraine-classification)
+
