@@ -1,6 +1,15 @@
 # SVM_headaches
 by Megan Tran
 
+## Table of Contents
+* [Purpose of Program](#Purpose-of-program)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Using the Program](#Using-the-Program)
+* [Credits](#Credits)
+
+
 Download the necessary packages:
 ```
 pip install scikit-learn
@@ -34,7 +43,7 @@ from sklearn.svm import SVC
 ## Using the Program
 1) Data Cleaning and Preprocessing
 
-In dataset, the values under "Type" were strings, so a dictionary was created to change each type of migrane to numerical values.
+In dataset, the values under "Type" were strings, so a dictionary was created to change each type of migrane to numerical values. Ot was then saved as a modified version of the original dataset.
 
 ```
 #Create dictionary to turn labels to values
@@ -51,23 +60,12 @@ migrane_labels_to_numbers = {
     
 }
 
-#relabel each list of labels to values
-pd_migrane["Type"] = pd_migrane["Type"].map(migrane_labels_to_numbers)
-
-#make updated csv
-pd_migrane.to_csv("migrane_dataMod.csv", index = False)
-
-#open new csv
-
-pd_mod_migrane = pd.read_csv("migrane_dataMod.csv").head()
-
-pd_mod_migrane
-
 ```
+![image](https://github.com/Sonicdaheghod/SVM_headaches/assets/68253811/f759ac63-a75b-4db7-a014-1b69a0d5978d)
 
 2) SVM Model
 
-Training and testing data points from dataset need to be made. I wanted the SVM model to use data under the columns below to predict the type of migrane a patient has.
+* Training and testing data points from dataset need to be made. I wanted the SVM model to use data under the columns below to predict the type of migrane a patient has.
 ```
 
 Var_features = pd_mod_migrane[['Age', 'Duration', 'Frequency', 'Location', 'Character', 'Intensity',
@@ -79,15 +77,8 @@ Var_features = pd_mod_migrane[['Age', 'Duration', 'Frequency', 'Location', 'Char
 
 ```
 
-Here the independent and dependent variables are made.
-```
-#List Independent Var
-IV_migrane = np.asarray(Var_features)
-
-#List Dependent Var
-DV_migrane = np.asarray(pd_mod_migrane["Type"])
-```
-Now we create the train/test split. Smaller test size means the model has more to train with, which means it can make more accurate predictions than training with fewer datapoints.
+* Independent and Dependent variables made for train_test_split. This allows the model to predict the type of migrane a patient has based on various features about a patient as seen in Var_features.
+* Now we create the train/test split. Smaller test size means the model has more to train with, which means it can make more accurate predictions than training with fewer datapoints.
 ```
 from sklearn.model_selection import train_test_split
 
